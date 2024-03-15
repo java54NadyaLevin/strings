@@ -105,12 +105,14 @@ class RegularExpressionsTest {
 		assertFalse("+072-548392568".matches(regex));
 		assertFalse("+972-348392568".matches(regex));
 		assertFalse("+972-54a392568".matches(regex));
+		assertFalse("+972-54a392568_".matches(regex));
 		assertFalse("+972 548 392568".matches(regex));
 		assertFalse("-972548392568".matches(regex));
 		assertFalse("+972-5-48392568".matches(regex));
 
 		assertFalse("+58392568".matches(regex));
 		assertFalse("058392568".matches(regex));
+		assertFalse("058392568 ".matches(regex));
 		assertFalse("348392568".matches(regex));
 		assertFalse("053-234561".matches(regex));
 		assertFalse("054 9392568".matches(regex));
