@@ -174,6 +174,7 @@ class RegularExpressionsTest {
 		assertTrue("(__)".matches(regex));
 		
 		assertFalse("(2+ _)".matches(regex));
+		assertFalse(")2(".matches(regex));
 		assertFalse("(2+ a12 *".matches(regex));
 		assertFalse("(2+ )a12)".matches(regex));
 
