@@ -2,6 +2,7 @@ package telran.strings.tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import telran.strings.RegularExpressions;
@@ -118,4 +119,63 @@ class RegularExpressionsTest {
 		assertFalse("054 9392568".matches(regex));
 
 	}
+//	@Test
+//	void grayTest() {
+//		String regex = RegularExpressions.gray();
+//
+//		assertTrue("GRAY".matches(regex));
+//		assertTrue("gReY".matches(regex));
+//
+//	}
+
+	@Test
+	@DisplayName("Test for IP V4 address regular expression")
+	void ipV4AdressTest() {
+		String ipV4regex = RegularExpressions.ipv4Address();
+		assertTrue("192.168.1.1".matches(ipV4regex));
+		assertFalse("192.168.1".matches(ipV4regex));
+		assertFalse("1.2.3.4.5".matches(ipV4regex));
+		assertFalse("192.168.1.256".matches(ipV4regex));
+		assertFalse("1 2.3.4".matches(ipV4regex));
+		assertFalse("1. 2.3.4".matches(ipV4regex));
+		assertFalse("1. 2.3&4".matches(ipV4regex));
+
+	}
+
+	@Test
+	@DisplayName("Test for simpleArithmeticExpressions")
+	void simpleArithmeticExpressionsTest() {
+		String regex = RegularExpressions.simpleArithmeticExpressions();
+		assertTrue("20".matches(regex));
+		assertTrue(" 20 +3 /2 *100".matches(regex));
+		assertTrue(" 1000 - 1".matches(regex));
+		assertTrue("21 ".matches(regex));
+
+		assertFalse("-21".matches(regex)); // - унарная операция, противоречит условию
+		assertFalse("".matches(regex));
+		assertFalse("20 ** 3".matches(regex));
+		assertFalse(" 20 + 3/2 *100 +".matches(regex));
+
+	}
+	
+	@Test
+	@DisplayName("Test for arithmeticExp with numbers "
+			+ "or variable names and brackets (Homework)")
+	void arithmeticExpTest() {
+		String regex = RegularExpressions.arithmeticExp();
+		
+		assertTrue("(20.5 + abc)*2".matches(regex));
+//		assertTrue("(20.5 + abc)*2".matches(regex));
+//		assertTrue("(20.5 + abc))*2".matches(regex));
+//		assertTrue("( 20.5 + abc$ / 3))*(2".matches(regex));
+//		assertTrue("(abc)".matches(regex));
+//		assertTrue("(_abc)".matches(regex));
+//		assertTrue("(__)".matches(regex));
+		
+		assertFalse("(2+ _)".matches(regex));
+		assertFalse("(2+ a12 *".matches(regex));
+		assertFalse("(2+ )a12)".matches(regex));
+
+	}
+
 }
