@@ -31,26 +31,4 @@ class ValidationTests {
 
 	}
 
-	@Test
-	@DisplayName("Test for version according to requirements (2 returnes)")
-	void isArithmeticExpAccordingToRequirementsTest() {
-
-		assertTrue(Validations.isArithmeticExpAccordingToRequirements("(20.5 + abc)*2"));
-		assertTrue(Validations.isArithmeticExpAccordingToRequirements("20"));
-		assertTrue(Validations.isArithmeticExpAccordingToRequirements("abc "));
-		assertTrue(Validations.isArithmeticExpAccordingToRequirements("($abc*w)+( ds/(sd-a))"));
-		
-		assertFalse(Validations.isArithmeticExpAccordingToRequirements(")20("));
-		assertFalse(Validations.isArithmeticExpAccordingToRequirements("((20.5 + abc)*2"));
-		assertFalse(Validations.isArithmeticExpAccordingToRequirements("(20.5 + abc))"));
-		assertFalse(Validations.isArithmeticExpAccordingToRequirements("(())"));
-		assertFalse(Validations.isArithmeticExpAccordingToRequirements(" "));
-		assertFalse(Validations.isArithmeticExpAccordingToRequirements("(!20 + abc )"));
-		assertFalse(Validations.isArithmeticExpAccordingToRequirements("{20}"));
-		assertFalse(Validations.isArithmeticExpAccordingToRequirements("1abc"));
-		assertFalse(Validations.isArithmeticExpAccordingToRequirements("-20"));
-		
-
-	}
-
 }

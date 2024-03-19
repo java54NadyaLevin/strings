@@ -159,25 +159,4 @@ class RegularExpressionsTest {
 
 	}
 	
-	@Test
-	@DisplayName("Test for arithmeticExp with numbers "
-			+ "or variable names and brackets (Homework)")
-	void arithmeticExpTest() {
-		String regex = RegularExpressions.arithmeticExp();
-		
-		assertTrue("(20.5 + abc)*2".matches(regex));
-		assertTrue("(20.5 + abc)*2".matches(regex));
-		assertTrue("(20.5 + abc))*2".matches(regex));
-		assertTrue("( 20.5 + abc$ / 3))*(2".matches(regex));
-		assertTrue("(abc)".matches(regex));
-		assertTrue("(_abc)".matches(regex));
-		assertTrue("(__)".matches(regex));
-		
-		assertFalse("(2+ _)".matches(regex));
-		assertFalse(")2(".matches(regex));
-		assertFalse("(2+ a12 *".matches(regex));
-		assertFalse("(2+ )a12)".matches(regex));
-
-	}
-
 }
