@@ -32,15 +32,12 @@ public class RegularExpressions {
 		// return String.format("%s(\\.%s){3}", ipOctetExpression, ipOctetExpression);
 	}
 
-	public static String simpleArithmeticExpressions() {
-		// TODO
-		// operations: only binary (+-*/)
-		// operands: only int
-		// no brackets
-		String operand = integerNumberExp();
+	public static String arithmeticExpGeneral(boolean isSimple) {
+		String operandSimple = integerNumberExp();
+		String operand = operandExp();
 		String operation = operationExp();
-		return String.format("%1$s(%2$s%1$s)*", operand, operation);
 
+		return String.format("%1$s(%2$s%1$s)*", isSimple ? operandSimple : operand, operation);
 	}
 
 	public static String integerNumberExp() {
@@ -51,15 +48,22 @@ public class RegularExpressions {
 		return "[-+*/]"; // don't need () because this exp = 1 symbol;
 	}
 
-	public static String arithmeticExp() {
-		String operand = operandExp();
-		String operation = operationExp();
-		return String.format("%1$s(%2$s%1$s)*", operand, operation);
+	public static String operandExp() {
+		String numberExp = "(\\d+(\\.\\d+)?)";
+		String javaVariable = javaVariable();
+		return String.format("(\\s*\\(*\\s*(%1$s|%2$s)\\s*\\)*\\s*)", numberExp, javaVariable);
+
 	}
 
-	public static String operandExp() {
-		return "(\\s*\\(*\\s*(\\d+(\\.\\d+)?|[A-Za-z$][\\w$]*|_[\\w$]+)\\s*\\)*\\s*)";
+	public static String simpleArithmeticExpressions() {
 
+		return arithmeticExpGeneral(true);
+
+	}
+
+	public static String arithmeticExp() {
+
+		return arithmeticExpGeneral(false);
 	}
 
 }
