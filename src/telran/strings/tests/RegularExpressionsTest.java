@@ -146,6 +146,7 @@ class RegularExpressionsTest {
 	@DisplayName("Test for simpleArithmeticExpressions")
 	void simpleArithmeticExpressionsTest() {
 		String regex = RegularExpressions.simpleArithmeticExpressions();
+		
 		assertTrue("20".matches(regex));
 		assertTrue(" 20 +3 /2 *100".matches(regex));
 		assertTrue(" 1000 - 1".matches(regex));
