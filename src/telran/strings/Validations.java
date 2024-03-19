@@ -22,4 +22,26 @@ public class Validations {
 		return count == 0;
 	}
 
+//according to requirement:
+//if during passing over the string expression counter < 0 returning false:
+	public static boolean isArithmeticExpAccordingToRequirements(String expression) {
+		String regex = RegularExpressions.arithmeticExp();
+		boolean result = false;
+		if (expression.matches(regex)) {
+			int count = 0;
+			for (int index = 0; index < expression.length(); index++) {
+				if (expression.charAt(index) == '(') {
+					count++;
+				} else if (expression.charAt(index) == ')') {
+					count--;
+				}
+				if (count < 0)
+					return false;
+			}
+			result = count == 0;
+		}
+
+		return result;
+	}
+
 }
