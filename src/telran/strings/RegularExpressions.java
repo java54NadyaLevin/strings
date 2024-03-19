@@ -58,7 +58,7 @@ public class RegularExpressions {
 	}
 	
 	public static String operandExp() {
-		return "(\\s*\\(*\\s*(\\d+|[A-Za-z$][\\w$]*|_[A-Za-z0-9_$]+)\\s*\\)*\\s*)";
+		return "(\\s*\\(*\\s*(\\d+(\\.\\d+)?|[A-Za-z$][\\w$]*|_[\\w$]+)\\s*\\)*\\s*)";
 		
 	}
 
