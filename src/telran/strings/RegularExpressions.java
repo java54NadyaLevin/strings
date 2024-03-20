@@ -32,7 +32,7 @@ public class RegularExpressions {
 		// return String.format("%s(\\.%s){3}", ipOctetExpression, ipOctetExpression);
 	}
 
-	public static String arithmeticExpGeneral(boolean isSimple) {
+	private static String arithmeticExpGeneral(boolean isSimple) {
 		String operandSimple = integerNumberExp();
 		String operand = operandExp();
 		String operation = operationExp();
@@ -40,15 +40,15 @@ public class RegularExpressions {
 		return String.format("%1$s(%2$s%1$s)*", isSimple ? operandSimple : operand, operation);
 	}
 
-	public static String integerNumberExp() {
+	private static String integerNumberExp() {
 		return "(\\s*\\d+\\s*)";
 	}
 
-	public static String operationExp() {
+	private static String operationExp() {
 		return "[-+*/]"; // don't need () because this exp = 1 symbol;
 	}
 
-	public static String operandExp() {
+	private static String operandExp() {
 		String numberExp = "(\\d+(\\.\\d+)?)";
 		String javaVariable = javaVariable();
 		return String.format("(\\s*\\(*\\s*(%1$s|%2$s)\\s*\\)*\\s*)", numberExp, javaVariable);
