@@ -49,9 +49,13 @@ public class RegularExpressions {
 	}
 
 	private static String operandExp() {
-		String numberExp = "(\\d+(\\.\\d+)?)";
+		String numberExp = "(\\d+(\\.\\d+)?)"; // (\\d*\\.?\\d+)
 		String javaVariable = javaVariable();
-		return String.format("(\\s*\\(*\\s*(%1$s|%2$s)\\s*\\)*\\s*)", numberExp, javaVariable);
+		return String.format("[\\s(]*(%s|%s)[)\\s]*", numberExp, javaVariable);
+		//\\s*\\(*\\s* = [\\s(]*
+		// 1$ | 2$ are not recommended here, because each pattern is used only once - 
+		//it's just a simple %d %f etc like in basic java.
+		
 
 	}
 

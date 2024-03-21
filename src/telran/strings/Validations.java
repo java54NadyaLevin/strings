@@ -12,7 +12,9 @@ public class Validations {
 		int count = 0;
 		int index = 0;
 		while (index < expression.length() && count > -1) {
-			if (expression.charAt(index) == '(') {
+			// it's better to transform String to charArray once! before the loop
+			//char[] characters = expression.toCharArray();
+			if (expression.charAt(index) == '(') { //characters[index] == '(';
 				count++;
 			} else if (expression.charAt(index) == ')') {
 				count--;
